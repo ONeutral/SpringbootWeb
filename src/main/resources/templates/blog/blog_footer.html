@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<footer th:fragment="blog_footer" data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
+    <div class="am-footer-switch">
+        <p>学习使用&nbsp;&nbsp; Copy by 2020 - <a th:href="@{https://shang.qq.com/wpa/qunwpa?idkey=9bd9543c01cfb5b1e0f7de8da5bf23efa8b38bf3217d1ac076a80fa14a1c0ce8}">O-Neutral</a>
+    </div>
+    <div class="am-footer-miscs ">
+        <p>这里是备案号</p>
+    </div>
+    <div>
+        <script>
+            $.ajax({
+                type : "GET",
+                url : "http://www.dzyong.top:3005/yiqing/total",
+                success : function(data) {          //请求成功的回调函数
+                    if (data.data[0].id == 1){
+                        var diagnosed=data.data[0].diagnosed;
+                        var suspect=data.data[0].suspect;
+                        var death=data.data[0].death;
+                        var cured=data.data[0].cured;
+                        var date=data.data[0].date;
+                        document.getElementById("diagnosed").innerHTML="感染人数："+diagnosed+"&nbsp&nbsp&nbsp&nbsp&nbsp新增感染："+suspect+"&nbsp&nbsp&nbsp&nbsp&nbsp死亡人数："+death+"&nbsp&nbsp&nbsp&nbsp&nbsp治愈："+cured+"&nbsp&nbsp&nbsp&nbsp&nbsp统计时间："+date;
+                    }
+                    else {console.log('data');}
+                },
+                error : function(e) {
+                    console.log(e);
+                }
+            });
+        </script>
+    </div>
+</footer>
+</html>

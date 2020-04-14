@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header th:fragment="blog-head-nav(path)" class="am-topbar">
+    <h1 class="am-topbar-brand " >
+        <a class="am-text-success" th:href="@{/}" ><span style="color: #FB7299">
+           ★杨宝森粉丝论坛★
+        </span>
+        </a>
+        <span class="am-text-xs">—Covid19&nbsp实时统计：</span>
+        <span class="am-badge am-badge-warning am-text-center am-text-sm" id="diagnosed"></span>
+    </h1>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+            data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+            class="am-icon-bars"></span></button>
+    <div class="am-collapse am-topbar-collapse am-topbar-right" id="doc-topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li sec:authorize="anonymous" ><a href="/login">登录</a></li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')" ><a >用户：<span sec:authentication="name"></span></a></li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')"><a th:href="@{/admin/index}" target="_blank" style="color: #FB7299">个人中心</a></li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')"><a th:href="@{/archive}" >时光机</a></li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')"><a th:href="@{/all_sort}" >论坛区</a></li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')" ><a href="/logout">注销</a></li>
+            <li><a th:href="@{https://shang.qq.com/wpa/qunwpa?idkey=9bd9543c01cfb5b1e0f7de8da5bf23efa8b38bf3217d1ac076a80fa14a1c0ce8}" target="_blank">加入我们</a></li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
+</header>
+</html>
